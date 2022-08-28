@@ -19,14 +19,12 @@ struct ToDoView: View {
             VStack{
                 // MARK: - Custum Board Picker
                 HStack(spacing : 0){
-                    
                     ForEach(TaskStatus.allCases , id: \.self) { status in
                         Button {
                             withAnimation{
                                 tasksVM.SelectedTaskStatus = status
                             }
                         } label: {
-                            
                             if status == tasksVM.SelectedTaskStatus {
                                 HStack {
                                     Text(status.title)
@@ -83,7 +81,7 @@ struct ToDoView: View {
                             boardOffest = -(UIScreen.main.bounds.width - 100)
                             
                         }else if (statusSection == .done){
-                            boardOffest = -(UIScreen.main.bounds.width + 70  )
+                            boardOffest = -((UIScreen.main.bounds.width - 100) * 2) + 100
                         }else {
                             boardOffest = 0
                         }
@@ -157,6 +155,7 @@ struct ToDoView: View {
                             
                         }
                     }
+                    .frame(width: (UIScreen.main.bounds.width - 100) * 3)
                     .offset(x:boardOffest)
                 
                     
